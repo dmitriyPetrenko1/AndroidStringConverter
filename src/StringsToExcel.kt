@@ -5,6 +5,9 @@ import com.grapecity.documents.excel.Workbook
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import java.io.File
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 
 
@@ -99,5 +102,6 @@ fun main() {
 
     writeDownDefaultStrings(worksheet)
     writeDownTranslations(worksheet)
-    workbook.save("strings.xlsx")
+    val currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss"))
+    workbook.save("excelOutput/strings$currentDateTime.xlsx")
 }
